@@ -1,7 +1,6 @@
 import React from 'react'
-
 import SwapiService from '../../services/SwapiService'
-import {withData} from '../HocHelpers/WithData'
+import withData from '../HocHelpers/withData'
 
 import './ItemList.css'
 
@@ -26,6 +25,10 @@ import './ItemList.css'
              {items}
         </ul>
     )
+}
+
+ItemList.defaultProps = {
+    onItemSelected: () => {}
 }
 
 const {getAllPeople} = new SwapiService()

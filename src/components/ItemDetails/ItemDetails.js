@@ -28,16 +28,18 @@ export default class ItemDetails extends Component {
     }
 
     componentDidMount() {
-        this.updatePerson()
+        this.updateItem()
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.itemId !== prevProps.itemId) {
-            this.updatePerson()            
+        if (this.props.itemId !== prevProps.itemId ||
+            this.props.getData !== prevProps.getData ||
+            this.props.getImageUrl !== prevProps.getImageUrl) {
+            this.updateItem()            
         }
     }
 
-    updatePerson() {
+    updateItem() {
         const {itemId, getData, getImageUrl} = this.props
         if (!itemId) {
             return            
@@ -65,7 +67,8 @@ export default class ItemDetails extends Component {
         return(
             <div className="item-details jumbotron rounded">
                 <img className="item-image"
-                     src={image} />
+                     src={image}
+                     alt="item" />
                 <div className="card-body">
                     <h4>{name}</h4>
                     <ul className="list-group list-group-flush">
